@@ -3,21 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entidades;
+package bibliotecadao;
 
-import java.util.ArrayList;
+import Dao.AutorDao;
+import Dao.CopiaDao;
+import Dao.EnMemoria.AutorDaoImpEnMemoria;
+import Dao.EnMemoria.CopiaDaoImpEnMemoria;
+import Dao.EnMemoria.LectorDaoImpEnMemoria;
+import Dao.EnMemoria.LibroDaoImpEnMemoria;
+import Dao.EnMemoria.PrestamoDaoImpEnMemoria;
+import Dao.EnMemoria.TipoLibroDaoImpEnMemoria;
+import Dao.LectorDao;
+import Dao.LibroDao;
+import Dao.PrestamoDao;
+import Dao.TipoLibroDao;
+import entidades.Autor;
+import entidades.Copia;
+import entidades.Lector;
+import entidades.Libro;
+import entidades.Prestamo;
+import entidades.TipoLibro;
 import java.util.Date;
-import Dao.*;
-import Dao.EnMemoria.*;
-import Control.GestorPrestamo;
 
 /**
  *
  * @author Docente
  */
-public class LoteDePrueba {
-    static  {
-        //
+public class CargaInicial {
+    
+    
+    
+    public static void  cargarDatosIniciales(){
         AutorDao autorDao = new AutorDaoImpEnMemoria();
         TipoLibroDao  tipoLibroDao = new TipoLibroDaoImpEnMemoria();
         LibroDao libroDao = new LibroDaoImpEnMemoria();
@@ -112,6 +128,7 @@ public class LoteDePrueba {
         Lector lectorUno = new Lector();
         lectorUno.setApellido("Navarro");
         lectorUno.setNombre("Lautaro");
+        lectorUno.setDni(12345678);
         
         lectorDao.guardarLector(lectorUno);
         
@@ -120,16 +137,14 @@ public class LoteDePrueba {
         prestamoUno.setCopia(c4);
         prestamoUno.setLector(lectorUno);
         prestamoDao.guardarPrestamo(prestamoUno);
-//            private Date fechaPrestamo;
-//            private Date fechaDevolucion;
-//            private Copia copia;
-//            private Lector lector;
-
-    }
-    public static void main(String[] args) {
-        GestorPrestamo gestorPrestamo = new GestorPrestamo();
-        gestorPrestamo.iniciar();
+        
+        
         
     }
+    
+    public static void main(String[] args) {
+        cargarDatosIniciales();
+    }
+    
     
 }

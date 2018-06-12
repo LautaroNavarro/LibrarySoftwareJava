@@ -14,27 +14,38 @@ import java.util.Date;
  * @author Alumno
  */
 public class Lector {
-
+    private static int siguienteNumeroLector = 1;
+            
+            
+            
     private int dni;
     private String apellido;
     private String nombre;
-    private Multa multa;
+    private int numeroLector= siguienteNumeroLector++;
+    
+    
+   /// private Multa multa;
     private ArrayList<Prestamo> prestamos = new ArrayList<>();
 
     public Lector(int dni, String apellido, String nombre) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre= nombre;
+    
+    }
+
+    public int getNumeroLector() {
+        return numeroLector;
     }
     
     public Lector(){
     
     }
     
-    public Lector(int dni, String apellido, Multa multa, ArrayList <Prestamo> prestamos, String nombre) {
+    public Lector(int dni, String apellido, ArrayList <Prestamo> prestamos, String nombre) {
         this.dni = dni;
         this.apellido = apellido;
-        this.multa = multa;
+ 
         this.prestamos = prestamos;
         this.nombre = nombre;
     }
@@ -78,13 +89,6 @@ public class Lector {
         this.nombre = nombre;
     }
 
-    public Multa getMulta() {
-        return multa;
-    }
-
-    public void setMulta(Multa multa) {
-        this.multa = multa;
-    }
 
     public ArrayList<Prestamo> getPrestamos() {
         return prestamos;
