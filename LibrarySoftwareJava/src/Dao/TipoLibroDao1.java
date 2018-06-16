@@ -5,15 +5,18 @@
  */
 package Dao;
 
-import entidades.Pais;
+import entidades.TipoLibro;
 import java.util.List;
 
 /**
  *
  * @author Alumno
  */
-public interface PaisDao {
-    List<Pais> obtenerPaises();
-    void guardarPais(Pais p);
-    void eliminarPais(Pais p);
+public interface TipoLibroDao1 {
+
+    List<TipoLibro> obtenerTiposLibros();
+
+    void guardarTiposLibros(TipoLibro p);
+
+    void eliminarTiposLibros(TipoLibro p);
 }

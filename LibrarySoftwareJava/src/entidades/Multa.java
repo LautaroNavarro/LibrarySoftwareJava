@@ -17,9 +17,11 @@ public class Multa {
     private int cantidadDias;
     private Prestamo prestamo;
     private Cancelacion cancelacion;
-    private Multa(){
+    
+    public Multa(){
     
     }
+
 
     public Date getFecha() {
         return fecha;
@@ -62,6 +64,23 @@ public class Multa {
 
     public void setCantidadDias(int cantidadDias) {
         this.cantidadDias = cantidadDias;
+    }
+    
+    public boolean estaVigente(){
+        if (this.cancelacion != null) {
+            return false;//Ya tiene cancelacion
+        }else{
+            long milisegundoDeUnDia = 1000*60*60*24;
+            long fechaInicioMulta = this.fecha.getTime();
+            long milisegundoFechaFin = fechaInicioMulta + milisegundoDeUnDia * this.cantidadDias;
+            long milisegundosDeHoy = (new Date()).getTime();
+            if (milisegundosDeHoy > milisegundoFechaFin) {
+                return false;
+            }else{
+                return true;
+            }
+        }
+        
     }
     
 }
